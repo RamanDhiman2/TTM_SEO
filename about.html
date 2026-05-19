@@ -9,27 +9,39 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.talkingtoomuch.com/about.html">
+    <meta property="og:url" content="https://ramandhiman2.github.io/TTM_SEO/about.html">
     <meta property="og:title" content="About Us & Contact | Talking Too Much">
     <meta property="og:description" content="Meet the developers and philosophers structuring online arguments. Get in touch with our moderation guild.">
-    <meta property="og:image" content="https://www.talkingtoomuch.com/assets/images/og-about.jpg">
+    <meta property="og:image" content="https://ramandhiman2.github.io/TTM_SEO/assets/images/og-about.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://www.talkingtoomuch.com/about.html">
+    <meta property="twitter:url" content="https://ramandhiman2.github.io/TTM_SEO/about.html">
     <meta property="twitter:title" content="About Us & Contact | Talking Too Much">
     <meta property="twitter:description" content="Meet the developers and philosophers structuring online arguments. Get in touch with our moderation guild.">
-    <meta property="twitter:image" content="https://www.talkingtoomuch.com/assets/images/og-about.jpg">
+    <meta property="twitter:image" content="https://ramandhiman2.github.io/TTM_SEO/assets/images/og-about.jpg">
 
     <title>About Us & Contact | Talking Too Much</title>
-    <link rel="canonical" href="https://www.talkingtoomuch.com/about.html">
+    <link rel="canonical" href="https://ramandhiman2.github.io/TTM_SEO/about.html">
+
+    <!-- Preconnect CDNs for faster DNS & TLS connection times -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+    <!-- Load Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Bootstrap Icons (Optimized / Non-render-blocking fallback load) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" media="print" onload="this.media='all'">
     <!-- Custom CSS -->
     <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- Deferred Scripts (Downloaded in parallel, non-blocking) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
 
     <!-- JSON-LD SEO Schema Markup -->
     <script type="application/ld+json">
@@ -37,13 +49,13 @@
       "@context": "https://schema.org",
       "@type": "AboutPage",
       "name": "About Us & Contact | Talking Too Much",
-      "url": "https://www.talkingtoomuch.com/about.html",
+      "url": "https://ramandhiman2.github.io/TTM_SEO/about.html",
       "description": "Learn about the mission, philosophy, and team behind Talking Too Much, and send us a direct inquiry.",
       "mainEntity": {
         "@type": "Organization",
         "name": "Talking Too Much Inc.",
-        "url": "https://www.talkingtoomuch.com/",
-        "logo": "https://www.talkingtoomuch.com/assets/images/logo.png",
+        "url": "https://ramandhiman2.github.io/TTM_SEO/",
+        "logo": "https://ramandhiman2.github.io/TTM_SEO/assets/images/logo.png",
         "email": "chambers@talkingtoomuch.com",
         "telephone": "+1-800-555-TALK",
         "foundingDate": "2026-01-15",
@@ -261,9 +273,7 @@
         </div>
     </footer>
 
-    <!-- Bootstrap 5 Bundle JS (Popper included) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
+    <!-- Custom JS (Executed after deferred resources load) -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Handle mock contact submission
@@ -324,6 +334,5 @@
             }
         });
     </script>
-    <script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap coordinates
-Sitemap: https://www.talkingtoomuch.com/sitemap.xml
+Sitemap: https://ramandhiman2.github.io/TTM_SEO/sitemap.xml

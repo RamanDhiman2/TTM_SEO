@@ -1,0 +1,807 @@
+/* 
+========================================================================
+   TALKING TOO MUCH - PREMIUM DEBATING PLATFORM CUSTOM CSS
+   Theme: Premium Slate-Glass Light Mode (Indigo & Ocean Cyan)
+========================================================================
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+    --bg-primary: #f4f6f9;       /* Light Alabaster Viewport */
+    --bg-secondary: #ffffff;     /* Crisp Pure White */
+    --bg-tertiary: #e2e8f0;      /* Soft Slate Gray Outlines */
+    --bg-glass: rgba(255, 255, 255, 0.85);
+    --border-glass: rgba(79, 70, 229, 0.08);
+    --border-glass-hover: rgba(79, 70, 229, 0.25);
+    
+    /* Branding Colors */
+    --brand-primary: #4f46e5;    /* Royal Indigo */
+    --brand-accent: #00b4d8;     /* Clean Ocean Cyan */
+    --brand-glow: rgba(79, 70, 229, 0.15);
+    
+    /* Text Colors */
+    --text-light: #0f172a;       /* Deep Slate Headings */
+    --text-primary: #334155;     /* Charcoal Slate Body text */
+    --text-muted: #64748b;       /* Muted Steel Gray */
+    --text-dark: #ffffff;        /* White text inside dark components */
+    
+    /* Debate Specifics */
+    --pro-color: #0d9488;        /* Pro side: Teal Green */
+    --pro-glow: rgba(13, 148, 136, 0.15);
+    --con-color: #e11d48;        /* Con side: Rose Red */
+    --con-glow: rgba(225, 29, 72, 0.15);
+    
+    /* Layout & Styling Utility */
+    --card-radius: 16px;
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --neon-shadow: 0 10px 30px rgba(79, 70, 229, 0.05);
+    --neon-shadow-strong: 0 15px 40px rgba(79, 70, 229, 0.12);
+    
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+/* ========================================================================
+   1. GLOBAL STYLES & RESET
+   ======================================================================== */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--text-light);
+    letter-spacing: -0.02em;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--bg-tertiary);
+    border-radius: 10px;
+    border: 2px solid var(--bg-primary);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--brand-primary);
+}
+
+/* Base Selection */
+::selection {
+    background-color: var(--brand-primary);
+    color: var(--text-dark);
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+/* Abstract Ambient Background Elements */
+.ambient-bg {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.05) 0%, rgba(244, 246, 249, 0) 70%);
+    top: -10%;
+    right: -10%;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(80px);
+    animation: pulseAmbient 15s infinite alternate ease-in-out;
+}
+
+.ambient-bg-2 {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 180, 216, 0.04) 0%, rgba(244, 246, 249, 0) 70%);
+    bottom: 20%;
+    left: -10%;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(80px);
+    animation: pulseAmbient 20s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes pulseAmbient {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(40px, 30px) scale(1.1); }
+}
+
+/* ========================================================================
+   2. TYPOGRAPHY & BUTTONS
+   ======================================================================== */
+.text-gradient {
+    background: linear-gradient(135deg, var(--text-light) 0%, var(--brand-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-green {
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Premium Buttons */
+.btn-premium {
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-accent) 100%);
+    color: var(--text-dark) !important;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.25);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--brand-accent) 0%, var(--brand-primary) 100%);
+    opacity: 0;
+    z-index: -1;
+    transition: var(--transition-smooth);
+}
+
+.btn-premium:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--neon-shadow-strong);
+}
+
+.btn-premium:hover::before {
+    opacity: 1;
+}
+
+.btn-premium-outline {
+    background: transparent;
+    color: var(--brand-primary) !important;
+    border: 2px solid var(--brand-primary);
+    font-weight: 600;
+    padding: 0.65rem 1.85rem;
+    border-radius: 30px;
+    transition: var(--transition-smooth);
+}
+
+.btn-premium-outline:hover {
+    background: rgba(79, 70, 229, 0.05);
+    box-shadow: var(--neon-shadow);
+    transform: translateY(-2px);
+    border-color: var(--brand-accent);
+    color: var(--brand-accent) !important;
+}
+
+/* ========================================================================
+   3. HEADER / NAVIGATION
+   ======================================================================== */
+.navbar-premium {
+    background-color: var(--bg-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 1rem 0;
+    transition: var(--transition-smooth);
+    z-index: 1000;
+}
+
+.navbar-premium.scrolled {
+    padding: 0.6rem 0;
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.navbar-premium .navbar-brand {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.6rem;
+    letter-spacing: -0.03em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-light);
+}
+
+.navbar-premium .navbar-brand .brand-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-accent) 100%);
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    color: var(--text-dark);
+}
+
+.navbar-premium .nav-link {
+    color: var(--text-muted);
+    font-weight: 500;
+    padding: 0.5rem 1.2rem !important;
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.navbar-premium .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--brand-primary);
+    transition: var(--transition-smooth);
+    transform: translateX(-50%);
+}
+
+.navbar-premium .nav-link:hover, 
+.navbar-premium .nav-item.active .nav-link {
+    color: var(--brand-primary);
+}
+
+.navbar-premium .nav-link:hover::after,
+.navbar-premium .nav-item.active .nav-link::after {
+    width: 60%;
+}
+
+.navbar-toggler-premium {
+    border: 1px solid rgba(0,0,0,0.08);
+    padding: 6px 10px;
+    border-radius: 6px;
+    color: var(--brand-primary);
+}
+
+.navbar-toggler-premium:focus {
+    box-shadow: var(--neon-shadow);
+}
+
+/* ========================================================================
+   4. GLASSMORPHISM CARDS & CONTAINERS
+   ======================================================================== */
+.glass-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: var(--card-radius);
+    padding: 2rem;
+    transition: var(--transition-smooth);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--brand-primary), transparent);
+    transform: scaleX(0);
+    transition: var(--transition-smooth);
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--border-glass-hover);
+    box-shadow: var(--neon-shadow-strong);
+}
+
+.glass-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Category Badge Styling */
+.badge-category {
+    background: rgba(79, 70, 229, 0.08);
+    border: 1px solid rgba(79, 70, 229, 0.15);
+    color: var(--brand-primary);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+}
+
+/* ========================================================================
+   5. DEBATING STATS & INTERACTION ITEMS
+   ======================================================================== */
+
+/* Voting/Sentiment Slider (Pro vs Con Progress Bar) */
+.debate-sentiment {
+    margin: 1.5rem 0;
+}
+
+.sentiment-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.sentiment-bar {
+    height: 10px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.05);
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+.sentiment-pro {
+    height: 100%;
+    background: linear-gradient(90deg, var(--brand-primary), var(--pro-color));
+    transition: width 0.8s ease-in-out;
+    box-shadow: 0 0 10px rgba(13, 148, 136, 0.2);
+}
+
+.sentiment-con {
+    height: 100%;
+    background: linear-gradient(90deg, #ff8da1, var(--con-color));
+    transition: width 0.8s ease-in-out;
+    box-shadow: 0 0 10px rgba(225, 29, 72, 0.2);
+}
+
+/* Interactive Vote buttons */
+.vote-btn-group {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.btn-vote-pro {
+    flex: 1;
+    border: 1px solid rgba(13, 148, 136, 0.3);
+    background: rgba(13, 148, 136, 0.04);
+    color: var(--pro-color);
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: var(--transition-smooth);
+}
+
+.btn-vote-pro:hover, .btn-vote-pro.active {
+    background: var(--pro-color);
+    color: var(--text-dark) !important;
+    box-shadow: 0 4px 15px var(--pro-glow);
+    border-color: var(--pro-color);
+}
+
+.btn-vote-con {
+    flex: 1;
+    border: 1px solid rgba(225, 29, 72, 0.3);
+    background: rgba(225, 29, 72, 0.04);
+    color: var(--con-color);
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: var(--transition-smooth);
+}
+
+.btn-vote-con:hover, .btn-vote-con.active {
+    background: var(--con-color);
+    color: var(--text-dark) !important;
+    box-shadow: 0 4px 15px var(--con-glow);
+    border-color: var(--con-color);
+}
+
+/* Stats counter card */
+.stat-counter {
+    text-align: center;
+    border-right: 1px solid rgba(0, 0, 0, 0.06);
+}
+.stat-counter:last-child {
+    border-right: none;
+}
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--brand-primary);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+}
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ========================================================================
+   6. DEBATE DETAILS VIEW - DUAL ARGUMENT SYSTEM
+   ======================================================================== */
+.debate-header-card {
+    background: radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.03) 0%, rgba(255, 255, 255, 0.98) 90%);
+    border: 1px solid rgba(79, 70, 229, 0.12);
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+}
+
+.debate-column-title-pro {
+    border-bottom: 3px solid var(--pro-color);
+    color: var(--pro-color);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-shadow: 0 2px 5px rgba(13, 148, 136, 0.05);
+}
+
+.debate-column-title-con {
+    border-bottom: 3px solid var(--con-color);
+    color: var(--con-color);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-shadow: 0 2px 5px rgba(225, 29, 72, 0.05);
+}
+
+/* Argument Node / Comment Card */
+.argument-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
+}
+
+.argument-card:hover {
+    transform: translateX(4px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+}
+
+.argument-card.arg-pro {
+    border-left: 4px solid var(--pro-color);
+}
+.argument-card.arg-pro:hover {
+    border-color: var(--pro-color);
+    background-color: rgba(13, 148, 136, 0.02);
+}
+
+.argument-card.arg-con {
+    border-left: 4px solid var(--con-color);
+}
+.argument-card.arg-con:hover {
+    border-color: var(--con-color);
+    background-color: rgba(225, 29, 72, 0.02);
+}
+
+.arg-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.arg-author {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.arg-author-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--bg-tertiary);
+    color: var(--brand-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.arg-upvotes {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.arg-upvotes:hover {
+    color: var(--brand-primary);
+}
+
+/* ========================================================================
+   7. FORM STYLING (PREMIUM FOCUS STATES)
+   ======================================================================== */
+.form-premium-control {
+    background-color: #ffffff !important;
+    border: 1px solid rgba(0,0,0,0.12) !important;
+    color: var(--text-primary) !important;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    transition: var(--transition-smooth) !important;
+}
+
+.form-premium-control:focus {
+    background-color: #ffffff !important;
+    border-color: var(--brand-primary) !important;
+    box-shadow: 0 0 15px rgba(79, 70, 229, 0.1) !important;
+    outline: none;
+}
+
+.form-premium-control::placeholder {
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+.form-premium-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%234f46e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
+}
+
+/* ========================================================================
+   8. HERO / ACCORDION / OTHER SECTIONS
+   ======================================================================== */
+.hero-section {
+    padding: 8rem 0 5rem 0;
+    position: relative;
+    z-index: 10;
+}
+
+.icon-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    background: rgba(79, 70, 229, 0.08);
+    border: 1px solid rgba(79, 70, 229, 0.15);
+    color: var(--brand-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--neon-shadow);
+}
+
+/* Accordion Rules Page custom design */
+.rules-accordion .accordion-item {
+    background-color: var(--bg-secondary);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    margin-bottom: 1rem;
+    border-radius: 12px !important;
+    overflow: hidden;
+}
+
+.rules-accordion .accordion-button {
+    background-color: transparent;
+    color: var(--text-light);
+    font-weight: 600;
+    padding: 1.25rem 1.5rem;
+    border: none;
+    box-shadow: none;
+    font-family: var(--font-heading);
+}
+
+.rules-accordion .accordion-button:not(.collapsed) {
+    color: var(--brand-primary);
+    background-color: rgba(79, 70, 229, 0.04);
+}
+
+.rules-accordion .accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+
+.rules-accordion .accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%234f46e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+
+.rules-accordion .accordion-body {
+    background-color: rgba(244, 246, 249, 0.4);
+    color: var(--text-primary);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* ========================================================================
+   9. FOOTER SECTION
+   ======================================================================== */
+.footer-premium {
+    background-color: #0f172a; /* Deep Slate dark background for modern footer styling */
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 5rem 0 2rem 0;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-premium h5, .footer-premium p, .footer-premium li a {
+    color: #e2e8f0;
+}
+
+.footer-logo {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.8rem;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.footer-logo span {
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.footer-premium h5 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.footer-premium h5::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background-color: var(--brand-accent);
+    bottom: 0;
+    left: 0;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+.footer-links a:hover {
+    color: var(--brand-accent);
+    padding-left: 5px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 12px;
+    margin-top: 1.5rem;
+}
+
+.social-icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+    text-decoration: none !important;
+}
+
+.social-icon-btn:hover {
+    background-color: var(--brand-accent);
+    color: var(--text-light);
+    box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+    transform: translateY(-3px);
+}
+
+.copyright-bar {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin-top: 4rem;
+    padding-top: 2rem;
+    color: #94a3b8;
+    font-size: 0.85rem;
+}
+
+/* ========================================================================
+   10. MEDIA QUERIES & MOBILE ADJUSTMENTS
+   ======================================================================== */
+@media (max-width: 991.98px) {
+    .hero-section {
+        padding: 6rem 0 3rem 0;
+        text-align: center;
+    }
+    .hero-buttons {
+        justify-content: center;
+    }
+    .stat-counter {
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        padding-bottom: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .stat-counter:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+    .debate-column-title-con {
+        margin-top: 2rem;
+    }
+}
+
+/* ========================================================================
+   11. LIGHT THEME BOOTSTRAP OVERRIDES & NEW UTILITY CLASSES
+   ======================================================================== */
+/* Globally map text-light inside navbar and components to the high-contrast deep-slate text */
+.navbar-brand.text-light,
+.navbar-brand.text-light span,
+.glass-card .text-light,
+.glass-card h4 a.text-light,
+.glass-card h5 a.text-light,
+.glass-card h3 a.text-light,
+.debate-header-card .text-light,
+.rules-accordion .text-light {
+    color: var(--text-light) !important;
+}
+
+/* Hover dynamic transitions for debate links */
+.glass-card h4 a.text-light:hover,
+.glass-card h5 a.text-light:hover,
+.glass-card h3 a.text-light:hover {
+    color: var(--brand-primary) !important;
+}
+
+/* Custom background containers to replace old dark hardcoded background lines */
+.section-stats {
+    background-color: rgba(79, 70, 229, 0.03) !important;
+    border-top: 1px solid var(--border-glass) !important;
+    border-bottom: 1px solid var(--border-glass) !important;
+}
+
+.section-popular {
+    background: radial-gradient(circle at 50% 50%, rgba(79, 70, 229, 0.02) 0%, rgba(244, 246, 249, 0) 80%) !important;
+}
+
+.bg-secondary.bg-opacity-5 {
+    background-color: rgba(108, 117, 125, 0.05) !important;
+}
+
+
